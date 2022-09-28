@@ -1,27 +1,33 @@
-//
-//  TableViewController.swift
-//  FileManager
-//
-//  Created by Иван Могутов on 15.09.2022.
-//
 
 import UIKit
 
 class TableViewController: UITableViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
-    var url: URL
+    private var url: URL
     
-    var files: [URL] {
-        return (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil))!
+    private var files: [URL] {
+        return (try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil)) ?? []
     }
+    
+    var filesList: [URL] = []
     
     init(url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
+        self.filesList = files
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if UserDefaults.standard.string(forKey: "sort") == nil {
+            UserDefaults.standard.set("1", forKey: "sort")
+        }
+        if UserDefaults.standard.string(forKey: "size") == nil {
+            UserDefaults.standard.set("1", forKey: "size")
+        }
     }
     
     override func viewDidLoad() {
@@ -30,6 +36,11 @@ class TableViewController: UITableViewController, UIImagePickerControllerDelegat
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         setupNavigationBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationAction), name: NSNotification.Name.needToReloadTableView, object: nil)
+    }
+    
+    @objc private func notificationAction() {
+        tableView.reloadData()
     }
     
     private func setupNavigationBar() {
@@ -42,7 +53,7 @@ class TableViewController: UITableViewController, UIImagePickerControllerDelegat
     }
     
     @objc private func createNewFolder(_ sender: Any) {
-        let alertController = UIAlertController(title: "Creating New Folder", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Create new folder", message: nil, preferredStyle: .alert)
         alertController.addTextField { textfield in
             textfield.placeholder = "Enter foler name"
         }
@@ -140,26 +151,44 @@ class TableViewController: UITableViewController, UIImagePickerControllerDelegat
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return files.count
+        return filesList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
-        let item = files[indexPath.row]
-        var isFolder: ObjCBool = false
-        FileManager.default.fileExists(atPath: item.path, isDirectory: &isFolder)
-        if isFolder.boolValue == true {
-            cell.detailTextLabel?.text = "Folder"
-            cell.accessoryType = .disclosureIndicator
-        } else {
-            cell.detailTextLabel?.text = "File"
+        
+        do {
+            if UserDefaults.standard.string(forKey: "sort") == "1" {
+                filesList.sort(by: {$0.absoluteString < $1.absoluteString})
+            } else {
+                filesList.sort(by: {$1.absoluteString < $0.absoluteString})
+            }
+            let item = filesList[indexPath.row]
+            var isFolder: ObjCBool = false
+            FileManager.default.fileExists(atPath: item.path, isDirectory: &isFolder)
+            if isFolder.boolValue == true {
+                cell.accessoryType = .disclosureIndicator
+            } else {
+            }
+            cell.textLabel?.text = item.lastPathComponent
+            if UserDefaults.standard.string(forKey: "size") == "1" {
+                
+                let size = try item.resourceValues(forKeys: [.fileSizeKey]).fileSize
+                let bcf = ByteCountFormatter()
+                bcf.allowedUnits = [.useMB]
+                bcf.countStyle = .file
+                let string = bcf.string(fromByteCount: Int64(size ?? 0))
+                cell.detailTextLabel?.text = string
+            }
+            return cell
+        } catch {
+            print(error.localizedDescription)
+            return cell
         }
-        cell.textLabel?.text = item.lastPathComponent
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = files[indexPath.row]
+        let item = filesList[indexPath.row]
         var isFolder: ObjCBool = false
         FileManager.default.fileExists(atPath: item.path, isDirectory: &isFolder)
         if isFolder.boolValue {
@@ -170,7 +199,7 @@ class TableViewController: UITableViewController, UIImagePickerControllerDelegat
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let item = files[indexPath.row]
+            let item = filesList[indexPath.row]
             do {
                 try FileManager.default.removeItem(at: item)
             } catch {
@@ -178,5 +207,19 @@ class TableViewController: UITableViewController, UIImagePickerControllerDelegat
             }
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+}
+
+extension NSNotification.Name {
+    static let needToReloadTableView = NSNotification.Name("needToReloadTableView")
+}
+
+extension FileManager {
+    func sizeOfFile(atPath path: String) -> Int64? {
+        guard let attrs = try? attributesOfItem(atPath: path) else {
+            return nil
+        }
+        
+        return attrs[.size] as? Int64
     }
 }

@@ -9,23 +9,26 @@
 /* Begin PBXBuildFile section */
 		2C827ED228D23BB5002FE8D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827ED128D23BB5002FE8D2 /* AppDelegate.swift */; };
 		2C827ED428D23BB5002FE8D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827ED328D23BB5002FE8D2 /* SceneDelegate.swift */; };
-		2C827ED928D23BB5002FE8D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C827ED728D23BB5002FE8D2 /* Main.storyboard */; };
 		2C827EDB28D23BB7002FE8D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C827EDA28D23BB7002FE8D2 /* Assets.xcassets */; };
 		2C827EDE28D23BB7002FE8D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C827EDC28D23BB7002FE8D2 /* LaunchScreen.storyboard */; };
-		2C827EE628D24FA9002FE8D2 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827EE528D24FA9002FE8D2 /* FileManagerService.swift */; };
 		2C827EEA28D34934002FE8D2 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C827EE928D34934002FE8D2 /* TableViewController.swift */; };
+		2CBF908328DA343C0072A7FD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF908228DA343C0072A7FD /* LogInViewController.swift */; };
+		2CBF908728DA35270072A7FD /* PasswordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF908628DA35270072A7FD /* PasswordManager.swift */; };
+		2CBF908A28DA36980072A7FD /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2CBF908928DA36980072A7FD /* KeychainAccess */; };
+		2CBF908E28DA47F30072A7FD /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBF908D28DA47F30072A7FD /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C827ECE28D23BB5002FE8D2 /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C827ED128D23BB5002FE8D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C827ED328D23BB5002FE8D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2C827ED828D23BB5002FE8D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C827EDA28D23BB7002FE8D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C827EDD28D23BB7002FE8D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C827EDF28D23BB7002FE8D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C827EE528D24FA9002FE8D2 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
 		2C827EE928D34934002FE8D2 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		2CBF908228DA343C0072A7FD /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		2CBF908628DA35270072A7FD /* PasswordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManager.swift; sourceTree = "<group>"; };
+		2CBF908D28DA47F30072A7FD /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBF908A28DA36980072A7FD /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,8 +65,9 @@
 				2C827ED128D23BB5002FE8D2 /* AppDelegate.swift */,
 				2C827ED328D23BB5002FE8D2 /* SceneDelegate.swift */,
 				2C827EE928D34934002FE8D2 /* TableViewController.swift */,
-				2C827EE528D24FA9002FE8D2 /* FileManagerService.swift */,
-				2C827ED728D23BB5002FE8D2 /* Main.storyboard */,
+				2CBF908228DA343C0072A7FD /* LogInViewController.swift */,
+				2CBF908628DA35270072A7FD /* PasswordManager.swift */,
+				2CBF908D28DA47F30072A7FD /* SettingsTableViewController.swift */,
 				2C827EDA28D23BB7002FE8D2 /* Assets.xcassets */,
 				2C827EDC28D23BB7002FE8D2 /* LaunchScreen.storyboard */,
 				2C827EDF28D23BB7002FE8D2 /* Info.plist */,
@@ -86,6 +91,9 @@
 			dependencies = (
 			);
 			name = FileManager;
+			packageProductDependencies = (
+				2CBF908928DA36980072A7FD /* KeychainAccess */,
+			);
 			productName = FileManager;
 			productReference = 2C827ECE28D23BB5002FE8D2 /* FileManager.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 2C827EC528D23BB5002FE8D2;
+			packageReferences = (
+				2CBF908828DA36980072A7FD /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 2C827ECF28D23BB5002FE8D2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -130,7 +141,6 @@
 			files = (
 				2C827EDE28D23BB7002FE8D2 /* LaunchScreen.storyboard in Resources */,
 				2C827EDB28D23BB7002FE8D2 /* Assets.xcassets in Resources */,
-				2C827ED928D23BB5002FE8D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,21 +154,15 @@
 				2C827EEA28D34934002FE8D2 /* TableViewController.swift in Sources */,
 				2C827ED228D23BB5002FE8D2 /* AppDelegate.swift in Sources */,
 				2C827ED428D23BB5002FE8D2 /* SceneDelegate.swift in Sources */,
-				2C827EE628D24FA9002FE8D2 /* FileManagerService.swift in Sources */,
+				2CBF908E28DA47F30072A7FD /* SettingsTableViewController.swift in Sources */,
+				2CBF908728DA35270072A7FD /* PasswordManager.swift in Sources */,
+				2CBF908328DA343C0072A7FD /* LogInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2C827ED728D23BB5002FE8D2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C827ED828D23BB5002FE8D2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2C827EDC28D23BB7002FE8D2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,7 +300,6 @@
 				INFOPLIST_FILE = FileManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -304,7 +307,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.FileManager";
+				PRODUCT_BUNDLE_IDENTIFIER = imogutov.FileManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -324,7 +327,6 @@
 				INFOPLIST_FILE = FileManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -332,7 +334,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.FileManager";
+				PRODUCT_BUNDLE_IDENTIFIER = imogutov.FileManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -362,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2CBF908828DA36980072A7FD /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2CBF908928DA36980072A7FD /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CBF908828DA36980072A7FD /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2C827EC628D23BB5002FE8D2 /* Project object */;
 }
