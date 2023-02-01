@@ -1,22 +1,25 @@
-//
-//  SceneDelegate.swift
-//  FileManager
-//
-//  Created by Иван Могутов on 14.09.2022.
-//
 
 import UIKit
+
+enum ScreenType {
+    case documents
+    case settings
+}
+
+private enum Images {
+    static let infoImage = UIImage(systemName: "info.circle.fill")
+    static let habitsImage = UIImage(systemName: "rectangle.grid.1x2.fill")
+}
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = UINavigationController(rootViewController: TableViewController(url: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]))
+        self.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
         self.window?.makeKeyAndVisible()
     }
 
